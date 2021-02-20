@@ -23,6 +23,9 @@ public class ScoreServiceImpl implements ScoreService {
 	@Autowired
 	private RollRule rollRule;
 	
+	@Autowired
+	private FrameService frameService;
+	
 	
 	public Score formatScore(Map<String, List<Roll>> mapPlayersRolls) throws BusinessException {
 		
@@ -53,12 +56,7 @@ public class ScoreServiceImpl implements ScoreService {
 				   Roll nextRoll = listRolls.get(j + 1);
 				   Roll nextNextRoll = listRolls.get(j + 2);
 				   
-				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue() + nextNextRoll.getScoreValue();
-				   
-				   Frame frame = new Frame();				   
-				   frame.setSum(sumFrame);
-				   
-				   frames.add(frame);
+				   frameService.prepareFrame(sumFrame, frames, true, false, currentRoll, nextRoll, nextNextRoll);
 				   
 				   j =+ 2;
 				   
@@ -67,12 +65,7 @@ public class ScoreServiceImpl implements ScoreService {
 				   Roll nextRoll = listRolls.get(j + 1); 
 				   Roll nextNextRoll = listRolls.get(j + 2);
 				   
-				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue() + nextNextRoll.getScoreValue();
-				   
-				   Frame frame = new Frame();				   
-				   frame.setSum(sumFrame);
-				   
-				   frames.add(frame);
+				   frameService.prepareFrame(sumFrame, frames, false, true, currentRoll, nextRoll, nextNextRoll);
 				   				   
 				   j++;
 				   
@@ -80,12 +73,7 @@ public class ScoreServiceImpl implements ScoreService {
 				   
 				   Roll nextRoll = listRolls.get(j + 1); 
 				   
-				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue();
-				   
-				   Frame frame = new Frame();				   
-				   frame.setSum(sumFrame);
-				   
-				   frames.add(frame);
+				   frameService.prepareFrame(sumFrame, frames, false, false, currentRoll, nextRoll);
 				   
 				   j =+ 2;
 				   
