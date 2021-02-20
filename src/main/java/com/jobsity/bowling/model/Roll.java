@@ -7,11 +7,11 @@ public class Roll {
 	
 	private String stringValueTemp;
 	
-	private static final String SPARE = "/";
+	public static final String SPARE = "/";
 	
-	private static final String STRIKE = "X";
+	public static final String STRIKE = "X";
 	
-	private static final String FOUL = "F";
+	public static final String FOUL = "F";
 	
 	public Roll(String stringValueTemp) {
 		this.stringValueTemp = stringValueTemp;
