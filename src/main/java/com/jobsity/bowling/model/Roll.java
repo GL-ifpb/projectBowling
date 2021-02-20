@@ -13,8 +13,8 @@ public class Roll {
 	
 	public static final String FOUL = "F";
 	
-	public Roll(String stringValueTemp) {
-		this.stringValueTemp = stringValueTemp;
+	public Roll(int scoreValue) {
+		this.scoreValue = scoreValue;
 	}
 
 	public int getScoreValue() {

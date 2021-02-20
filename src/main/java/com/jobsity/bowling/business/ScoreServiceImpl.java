@@ -45,23 +45,13 @@ public class ScoreServiceImpl implements ScoreService {
 		   
 		   for(int i = 0; i < 10; i++) {			   
 			   			   
-			   Roll currentRoll = listRolls.get(j++);
+			   Roll currentRoll = listRolls.get(j);
+			   Roll nextRollAux = listRolls.get(j + 1);
 			   
-			   if(rollRule.isSpare(currentRoll)) {
+			   if(rollRule.isSpare(currentRoll, nextRollAux)) {
 				   
-				   Roll nextRoll = listRolls.get(j++);
-				   
-				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue();
-				   
-				   Frame frame = new Frame();				   
-				   frame.setSum(sumFrame);
-				   
-				   frames.add(frame);
-				   
-			   } else if(rollRule.isStrike(currentRoll)) {
-				   
-				   Roll nextRoll = listRolls.get(j++); 
-				   Roll nextNextRoll = listRolls.get(j++);
+				   Roll nextRoll = listRolls.get(j + 1);
+				   Roll nextNextRoll = listRolls.get(j + 2);
 				   
 				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue() + nextNextRoll.getScoreValue();
 				   
@@ -70,9 +60,25 @@ public class ScoreServiceImpl implements ScoreService {
 				   
 				   frames.add(frame);
 				   
+				   j =+ 2;
+				   
+			   } else if(rollRule.isStrike(currentRoll)) {
+				   
+				   Roll nextRoll = listRolls.get(j + 1); 
+				   Roll nextNextRoll = listRolls.get(j + 2);
+				   
+				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue() + nextNextRoll.getScoreValue();
+				   
+				   Frame frame = new Frame();				   
+				   frame.setSum(sumFrame);
+				   
+				   frames.add(frame);
+				   				   
+				   j++;
+				   
 			   } else {
 				   
-				   Roll nextRoll = listRolls.get(j++); 
+				   Roll nextRoll = listRolls.get(j + 1); 
 				   
 				   sumFrame += currentRoll.getScoreValue() + nextRoll.getScoreValue();
 				   
@@ -80,6 +86,8 @@ public class ScoreServiceImpl implements ScoreService {
 				   frame.setSum(sumFrame);
 				   
 				   frames.add(frame);
+				   
+				   j =+ 2;
 				   
 			   }
 			   
