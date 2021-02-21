@@ -13,7 +13,7 @@ Some good practices were used, such as reusability, dependency inversion princip
 Project is created with:
 * SpringBoot: 2.4.3
 * JUnit: 5.7.1
-* JDK: 1.8
+* JDK: 8
 * Maven: 3
 	
 ## Setup
