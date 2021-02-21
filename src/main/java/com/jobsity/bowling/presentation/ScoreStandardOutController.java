@@ -1,3 +1,8 @@
+
+/**
+ * @author Giuliano Lins
+ * 
+ */
 package com.jobsity.bowling.presentation;
 
 import com.jobsity.bowling.model.Score;

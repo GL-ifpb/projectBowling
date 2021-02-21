@@ -1,3 +1,8 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
+
 package com.jobsity.bowling.business;
 
 import java.util.ArrayList;
@@ -52,7 +57,7 @@ public class ScoreStandardOutServiceImpl implements ScoreStandardOutService {
 					
 				} else {
 					
-					stringBuilderOutPut.append(formatFrame(listRolls));
+					stringBuilderOutPut.append(formatFrame(listRolls));					
 					
 				}
 				
@@ -60,6 +65,9 @@ public class ScoreStandardOutServiceImpl implements ScoreStandardOutService {
 				
 			});
 			
+			stringBuilderOutPut.delete(stringBuilderOutPut.length() - 1, stringBuilderOutPut.length());
+			
+			sumScore = sumScore.substring(0, sumScore.length() - 2);
 			
 			stringBuilderOutPut.append(SCORE);
 			

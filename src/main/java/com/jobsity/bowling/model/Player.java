@@ -1,3 +1,8 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
+
 package com.jobsity.bowling.model;
 
 public class Player {

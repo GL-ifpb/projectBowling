@@ -1,3 +1,8 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
+
 package com.jobsity.bowling.business.rules;
 
 import com.jobsity.bowling.model.Roll;

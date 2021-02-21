@@ -1,3 +1,8 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
+
 package com.jobsity.bowling.exceptions;
 
 public class DataException extends Exception {

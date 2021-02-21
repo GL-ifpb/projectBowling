@@ -1,3 +1,7 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
 package com.jobsity.bowling.model;
 
 import java.util.List;

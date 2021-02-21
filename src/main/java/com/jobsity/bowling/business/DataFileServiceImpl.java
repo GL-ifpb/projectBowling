@@ -6,6 +6,7 @@
 package com.jobsity.bowling.business;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -35,11 +36,13 @@ public class DataFileServiceImpl implements DataFileService{
 
 		try{
 			
-			validateRolls(dataFileRepository.readFile(path));
+			Map<String, List<Roll>> mapPlayersRolls = dataFileRepository.readFile(path);
 			
-			populateRolls(dataFileRepository.readFile(path));
+			validateRolls(mapPlayersRolls);
 			
-			return dataFileRepository.readFile(path);
+			populateRolls(mapPlayersRolls);
+			
+			return mapPlayersRolls;
 			
 		} catch(DataException dataException){
 			
@@ -68,8 +71,8 @@ public class DataFileServiceImpl implements DataFileService{
 	
 	private void populateRolls(Map<String, List<Roll>> mapPlayersRolls) {
 		
-		for (Map.Entry<String, List<Roll>> entry : mapPlayersRolls.entrySet()) {
-	        
+		for (Map.Entry<String, List<Roll>> entry : mapPlayersRolls.entrySet()) {			
+			
 			for(Roll roll : entry.getValue()) {
 				
 				roll.setScoreValue(Integer.parseInt(roll.getStringValueTemp()));

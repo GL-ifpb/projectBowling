@@ -1,3 +1,8 @@
+/**
+ * @author Giuliano Lins
+ * 
+ */
+
 package com.jobsity.bowling.business;
 
 import java.util.ArrayList;
@@ -45,11 +50,11 @@ public class ScoreServiceImpl implements ScoreService {
 		   
 		   int sumFrame = 0;
 		   
-		   for(int i = 0; i < 10; i++) {			   
-			   			   
+		   for(int i = 0; i < 10; i++) {			 			   			   
+				   
 			   Roll currentRoll = listRolls.get(j);
-			   Roll nextRollAux = listRolls.get(j + 1);
-			   
+			   Roll nextRollAux = listRolls.get(j + 1);				
+			  
 			   if(rollRule.isSpare(currentRoll, nextRollAux)) {
 				   
 				   Roll nextRoll = listRolls.get(j + 1);
