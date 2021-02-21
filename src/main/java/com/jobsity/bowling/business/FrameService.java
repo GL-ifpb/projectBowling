@@ -7,6 +7,12 @@ import com.jobsity.bowling.model.Roll;
 
 public interface FrameService {
 	
-	public void prepareFrame(int sumFrame, List<Frame> frames, boolean isSpare, boolean isStrike, Roll... rolls);
+	public int prepareFrameStrike(int sumFrame, List<Frame> frames, Roll... rolls);
+	
+	public int prepareFrameStrikeThreeRolls(int sumFrame, List<Frame> frames, Roll... rolls);
+	
+	public int prepareFrameSpare(int sumFrame, List<Frame> frames, Roll... rolls);
+	
+	public int prepareFrame(int sumFrame, List<Frame> frames, Roll... rolls);
 
 }

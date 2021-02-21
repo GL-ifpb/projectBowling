@@ -8,10 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jobsity.bowling.business.rules.RollRule;
 import com.jobsity.bowling.exceptions.DataException;
 import com.jobsity.bowling.model.Roll;
 
@@ -34,16 +32,19 @@ public class DataFileRepositoryImpl implements DataFileRepository {
 				
 				String playerName = row[POSITION.PLAYER_NAME.ordinal()];	
 				
-				System.out.println(playerName);
+				//System.out.println(playerName);
 				
 				String rollScore = row[POSITION.ROLL.ordinal()];
 				
-				rollScore = rollScore.equals(Roll.FOUL) ? "0" : rollScore;
+				boolean isFoul = rollScore.equals(Roll.FOUL) ? true : false;
+				
+				rollScore = rollScore.equals(Roll.FOUL) ? "0" : rollScore;				
 								
 				List<Roll> listRolls = mapPlayersRolls.getOrDefault(playerName, new ArrayList<Roll>());
+					
+				listRolls.add(new Roll(rollScore, isFoul));				
 				
-				listRolls.add(new Roll(Integer.parseInt(rollScore)));
-				mapPlayersRolls.put(playerName, listRolls);
+				mapPlayersRolls.put(playerName, listRolls);	
 				
 			});
 		} catch(IOException ioException){

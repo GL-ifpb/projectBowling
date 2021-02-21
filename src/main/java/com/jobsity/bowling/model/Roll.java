@@ -7,16 +7,30 @@ public class Roll {
 	
 	private String stringValueTemp;
 	
+	private boolean isFoul;
+	
 	public static final String SPARE = "/";
 	
 	public static final String STRIKE = "X";
 	
 	public static final String FOUL = "F";
 	
-	public Roll(int scoreValue) {
+	
+	
+	public Roll(int scoreValue, boolean isFoul) {
 		this.scoreValue = scoreValue;
+		this.isFoul = isFoul;
+	}
+	
+	public Roll(String stringValueTemp, boolean isFoul) {
+		this.stringValueTemp = stringValueTemp;
+		this.isFoul = isFoul;
 	}
 
+	public boolean isFoul() {
+		return isFoul;
+	}
+	
 	public int getScoreValue() {
 		return scoreValue;
 	}

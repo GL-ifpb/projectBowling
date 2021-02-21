@@ -11,4 +11,8 @@ public class BusinessException extends Exception {
 		super(message, t);
 	}
 	
+	public BusinessException(String message) {
+		super(message);
+	}
+	
 }

@@ -8,34 +8,33 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jobsity.bowling.business.DataFileService;
+import com.jobsity.bowling.business.ScoreService;
 import com.jobsity.bowling.exceptions.BusinessException;
 import com.jobsity.bowling.model.Roll;
+import com.jobsity.bowling.model.Score;
 
 @Service
-public class DataFileControllerImpl implements DataFileController {
-	
+public class ScoreControllerImpl implements ScoreController {
+
 	@Autowired
-	private DataFileService dataFileService;
+	private ScoreService scoreService;
 	
 	private Logger logger = LoggerFactory.getLogger(DataFileControllerImpl.class); 
 	
-	public Map<String, List<Roll>> readFile(String path){
-
-		try{
+	public Score formatScore(Map<String, List<Roll>> mapPlayersRolls) {
+		
+		try {
 			
-			return dataFileService.readFile(path);
+			return scoreService.formatScore(mapPlayersRolls);
 			
 		} catch(BusinessException dataException){
 			
 			logger.info(dataException.getMessage(), dataException);
 			
-			System.exit(1);
-			
 		}
 		
 		return null;
 		
-	}	
-
+	}
+	
 }

@@ -3,18 +3,16 @@ package com.jobsity.bowling.business;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jobsity.bowling.business.rules.RollRule;
 import com.jobsity.bowling.exceptions.BusinessException;
+import com.jobsity.bowling.model.Frame;
 import com.jobsity.bowling.model.Game;
 import com.jobsity.bowling.model.Roll;
 import com.jobsity.bowling.model.Score;
-import com.jobsity.bowling.model.Frame;
 
 @Service
 public class ScoreServiceImpl implements ScoreService {
@@ -26,6 +24,7 @@ public class ScoreServiceImpl implements ScoreService {
 	@Autowired
 	private FrameService frameService;
 	
+	private int MAX_SIZE_FRAMES = 10;
 	
 	public Score formatScore(Map<String, List<Roll>> mapPlayersRolls) throws BusinessException {
 		
@@ -42,7 +41,7 @@ public class ScoreServiceImpl implements ScoreService {
 		    
 		   List<Roll> listRolls = mapPlayersRolls.get(key);
 		
-		   int j = -1;
+		   int j = 0;
 		   
 		   int sumFrame = 0;
 		   
@@ -55,17 +54,26 @@ public class ScoreServiceImpl implements ScoreService {
 				   
 				   Roll nextRoll = listRolls.get(j + 1);
 				   Roll nextNextRoll = listRolls.get(j + 2);
-				   
-				   frameService.prepareFrame(sumFrame, frames, true, false, currentRoll, nextRoll, nextNextRoll);
-				   
-				   j =+ 2;
-				   
+				       
+				   sumFrame += frameService.prepareFrameSpare(sumFrame, frames, currentRoll, nextRoll, nextNextRoll);
+									   
+				   j += 2;
+				   	
 			   } else if(rollRule.isStrike(currentRoll)) {
 				   
 				   Roll nextRoll = listRolls.get(j + 1); 
 				   Roll nextNextRoll = listRolls.get(j + 2);
 				   
-				   frameService.prepareFrame(sumFrame, frames, false, true, currentRoll, nextRoll, nextNextRoll);
+				   if(i == MAX_SIZE_FRAMES - 1) {
+					   
+					   sumFrame += frameService.prepareFrameStrikeThreeRolls(sumFrame, frames, currentRoll, nextRoll, nextNextRoll);
+					   
+				   } else {
+					   
+					   sumFrame += frameService.prepareFrameStrike(sumFrame, frames, currentRoll, nextRoll, nextNextRoll);
+					   
+				   }
+				   
 				   				   
 				   j++;
 				   
@@ -73,9 +81,9 @@ public class ScoreServiceImpl implements ScoreService {
 				   
 				   Roll nextRoll = listRolls.get(j + 1); 
 				   
-				   frameService.prepareFrame(sumFrame, frames, false, false, currentRoll, nextRoll);
+				   sumFrame += frameService.prepareFrame(sumFrame, frames, currentRoll, nextRoll);
 				   
-				   j =+ 2;
+				   j += 2;
 				   
 			   }
 			   
