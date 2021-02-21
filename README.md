@@ -19,8 +19,15 @@ Project is created with:
 ## Setup
 To build and run this project, follow these steps:
 
+Step 1:
 ```
-$ git clone 
+$ git clone https://github.com/GL-ifpb/projectBowling
 $ cd bowling
 $ mvn clean package
+```
+
+Step 2:
+```
+$ cd bowling-game/target
+$ java -jar bowling-0.0.1-SNAPSHOT.jar /file-folder/commonSample.txt
 ```
