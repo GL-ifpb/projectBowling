@@ -16,7 +16,7 @@ import com.jobsity.bowling.model.Roll;
 @Service
 public class FrameServiceImpl implements FrameService {
 
-	
+	@Override
 	public int prepareFrameStrike(int sumFrame, List<Frame> frames, Roll... rolls) {
 		
 		   Roll currentRoll = rolls[0];
@@ -37,6 +37,7 @@ public class FrameServiceImpl implements FrameService {
 		   return sumFrameAux;
 	}
 	
+	@Override
 	public int prepareFrameStrikeThreeRolls(int sumFrame, List<Frame> frames, Roll... rolls) {
 		
 		   Roll currentRoll = rolls[0];
@@ -57,6 +58,7 @@ public class FrameServiceImpl implements FrameService {
 		   return sumFrameAux;
 	}
 	
+	@Override
 	public int prepareFrameSpare(int sumFrame, List<Frame> frames, Roll... rolls) {
 		
 		   Roll currentRoll = rolls[0];
@@ -78,6 +80,7 @@ public class FrameServiceImpl implements FrameService {
 		
 	}
 	
+	@Override
 	public int prepareFrame(int sumFrame, List<Frame> frames, Roll... rolls) {
 		
 		   Roll currentRoll = rolls[0];

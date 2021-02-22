@@ -31,6 +31,7 @@ public class ScoreServiceImpl implements ScoreService {
 	
 	private int MAX_SIZE_FRAMES = 10;
 	
+	@Override
 	public Score formatScore(Map<String, List<Roll>> mapPlayersRolls) throws BusinessException {
 		
 		

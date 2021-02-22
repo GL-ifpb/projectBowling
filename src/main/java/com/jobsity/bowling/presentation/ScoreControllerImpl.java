@@ -26,6 +26,7 @@ public class ScoreControllerImpl implements ScoreController {
 	
 	private Logger logger = LoggerFactory.getLogger(DataFileControllerImpl.class); 
 	
+	@Override
 	public Score formatScore(Map<String, List<Roll>> mapPlayersRolls) {
 		
 		try {

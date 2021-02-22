@@ -7,11 +7,9 @@ package com.jobsity.bowling.business;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import com.jobsity.bowling.model.Frame;
 import com.jobsity.bowling.model.Roll;
@@ -32,6 +30,7 @@ public class ScoreStandardOutServiceImpl implements ScoreStandardOutService {
 	
 	private StringBuilder stringBuilderOutPut = new StringBuilder();
 
+	@Override
 	public String printToStandardOutput(Score score) {
 		
 		stringBuilderOutPut.append(HEADER);

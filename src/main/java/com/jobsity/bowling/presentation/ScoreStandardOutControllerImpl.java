@@ -17,6 +17,7 @@ public class ScoreStandardOutControllerImpl implements ScoreStandardOutControlle
 	@Autowired
 	ScoreStandardOutService scoreStandardOutService;
 	
+	@Override
 	public String printToStandardOutput(Score score) {
 		
 		return scoreStandardOutService.printToStandardOutput(score)	;

@@ -21,11 +21,14 @@ import com.jobsity.bowling.model.Roll;
 @Service
 public class DataFileRepositoryImpl implements DataFileRepository {
 
+	private String ERROR_MESSAGE_READ_FILE = "Error to read File!";
+	
 	enum POSITION{
 		PLAYER_NAME,
 		ROLL
 	}
 	
+	@Override
 	public Map<String, List<Roll>> readFile(String path) throws DataException{
 	
 		Map<String, List<Roll>> mapPlayersRolls = new HashMap<String, List<Roll>>();
@@ -54,7 +57,7 @@ public class DataFileRepositoryImpl implements DataFileRepository {
 			});
 		} catch(IOException ioException){
 			
-			throw new DataException("Error to read File!", ioException);
+			throw new DataException(ERROR_MESSAGE_READ_FILE, ioException);
 			
 		}
 		

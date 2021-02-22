@@ -14,18 +14,21 @@ public class RollRuleImpl implements RollRule {
 	
 	private String regexRoll = "F|[0-9]|10";
 	
+	@Override
 	public boolean isSpare(Roll roll, Roll nextRoll) {
 		
 		return roll.getScoreValue() + nextRoll.getScoreValue() == 10 && !isStrike(roll);
 		
 	}
 	
+	@Override
 	public boolean isStrike(Roll roll) {
 		
 		return roll.getScoreValue() == 10;
 		
 	}
 	
+	@Override
 	public boolean isAValidRoll(String valueRoll) {
 		
 		return valueRoll.matches(regexRoll);

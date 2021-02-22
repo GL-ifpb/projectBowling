@@ -1,18 +1,16 @@
 package com.jobsity.bowling.business;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -33,9 +31,10 @@ public class ScoreServiceTest {
 	private FrameService frameService = new FrameServiceImpl();
 	
 	@Spy
-	private RollRule rollRule = new RollRuleImpl();
-	
+	private RollRule rollRule = new RollRuleImpl();	
+		
 	private AutoCloseable closeable;
+	
 	
 	@BeforeEach
 	public void setUp() {

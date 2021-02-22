@@ -3,10 +3,10 @@ package com.jobsity.bowling;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class BowlingApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
