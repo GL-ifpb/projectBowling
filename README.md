@@ -28,6 +28,6 @@ $ mvn clean package
 
 Step 2:
 ```
-$ cd bowling-game/target
+$ cd bowling/target
 $ java -jar bowling-0.0.1-SNAPSHOT.jar /file-folder/commonSample.txt
 ```
