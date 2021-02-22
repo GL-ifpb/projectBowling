@@ -31,3 +31,4 @@ Step 2:
 $ cd bowling/target
 $ java -jar bowling-0.0.1-SNAPSHOT.jar /file-folder/commonSample.txt
 ```
+The input files are in file directory.
